@@ -1,0 +1,1 @@
+#Launch for Smart Shades NFT project
