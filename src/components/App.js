@@ -136,7 +136,13 @@ function App() {
 			setIsMinting(true)
 			setIsError(false)
 
-			await smartShades.methods.mint(1).send({ from: account, value: 24000000000000000000 })
+			//await smartShades.methods.mint(1).send({ from: account, value: 24000000000000000000 })
+			await smartShades.methods.mint(1).send({ 
+				from: account, 
+				value: 24000000000000000000,
+				gas: 30000,
+				gasPrice: 25000000000000
+ 				})
 				.on('confirmation', async () => {
 					const maxSupply = await smartShades.methods.maxSupply().call()
 					const totalSupply = await smartShades.methods.totalSupply().call()
@@ -211,7 +217,7 @@ function App() {
 						<div>
 							<h3 className='h3' p-2>Mint a Smart Shades NFT because...</h3>
 									<ul className="li">
-										<li>Purchasing one gives you FREE access to our unique, scientific brain training guide and software package</li>
+										<li>Purchasing one gives you FREE access to our unique, scientific, <a href="https://www.neurokeep.com/smart-shades-brain-training" target='_blank'>brain training guide and software package</a></li>
 										<li>As an NFT holder you'll also get exclusive and FREE access to upgrades, and new brain training and testing products when they're released</li>
 										<li>It's Easy! You can mint the "traditional" way by connecting your MetaMask wallet, or you can buy one by simply using your credit card</li>
 										<li>It's the best value of any NFT you'll find! Boost your brain with our SMART SHADES brain training and you're surely GMI!</li>
@@ -265,7 +271,7 @@ function App() {
 
 					<Row className='flex m-3 my-3 p-8 mb-0 pb-0'>
 					<Col md={11} lg={11} xl={11} xxl={11} className='text-center' style={{ paddingTop: '8vh' }}>
-							<h3 className='h3' p-2>As a Smart Shades NFT holder, you'll be entitled to some great future brain boosting perks such as...</h3>
+							<h3 className='h3' p-2>As a Smart Shades NFT holder you'll get...</h3>
 									<ul className="li">
 										<li>Free access to any new games we make for intelligence training</li>
 										<li>Free access to any intelligence testing software we make (find out how "smart" you really are!)</li>
